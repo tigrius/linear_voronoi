@@ -9,9 +9,9 @@ function setup(){
 
     createLines(line_num);
 
-    createCanvas(width,height);
+    let canvas = createCanvas(width,height);
+    canvas.parent("p5_canvas");
     background(0);
-    let pink = color(0, 102, 204);
     let img = createImage(width, height);
     img.loadPixels() ;
     let fullImage = img.width * img.height *4 ;
