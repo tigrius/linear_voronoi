@@ -15,7 +15,6 @@ let isDisplayLines = true;
 let canvas;
 
 function setup(){
-    console.log("bbbbbb");
     height_input = document.getElementById("height");
     width_input = document.getElementById("width");
     line_num_input = document.getElementById("line_num");
