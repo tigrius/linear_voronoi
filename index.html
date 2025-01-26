@@ -2,20 +2,47 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<link rel = "stylesheet" href = "style.css">
 <title></title>
 </head>
 <body>
     <h1>直線ボロノイ図メーカー</h1>
+    <p>ver1.0</p>
     <div id = "p5_canvas"></div>
     <script src = "p5.min.js"></script>
     <script src="main.js"></script>
+    <div class="row">
+        <div class = "row">
+            <div>height:</div>
+            <input type = "number" id = "height" value = "256">
+        </div>
+        <div class = "row">
+            <div>width:</div>
+            <input type = "number" id = "width" value = "256">
+        </div>
+    </div>
+    <div class="row">
+        <div>線の数:</div>
+        <input type = "number" id = "line_num" value = "100">
+    </div>
+    <div class="row">
+        <input type = "checkbox" id = "display_lines" checked>
+        <div>線の表示</div>
+    </div>
+    <div class = "row">
+    <button id = "execute">作成</button>
     <div>
-        <div>height:</div>
-        <input type = "number" id = "height">
+    <div>保存形式</div>
+    <div>
+    <input type="radio" id="png" name = "extention" checked>
+    <label for="png">png</label>
     </div>
     <div>
-        <div>width</div>
-        <input type = "number" id = "width">
+        <input type="radio" id="jpg" name = "extention">
+        <label for="jpg">jpg</label>
+    </div>
+    <button id = "save">保存</button>
+    </div>
     </div>
     
 </body>

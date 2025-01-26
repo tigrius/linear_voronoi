@@ -1,15 +1,33 @@
-const width = 512;
-const height = 512;
-const line_num = 100;
+let width = 256;
+let height = 256;
+let line_num = 100;
 
 let line_data = [];
 let color_data = [];
 
+let height_input;
+let width_input;
+let line_num_input;
+let isDisplayLinesCheck;
+let save_btn;
+let isDisplayLines = true;
+
+let canvas;
+
 function setup(){
+    console.log("bbbbbb");
+    height_input = document.getElementById("height");
+    width_input = document.getElementById("width");
+    line_num_input = document.getElementById("line_num");
+    isDisplayLinesCheck = document.getElementById("display_lines");
+    save_btn = document.getElementById("save");
+    let execute_btn = document.getElementById("execute");
+    execute_btn.onclick = execute;
+    save_btn.onclick = saving_image;
 
     createLines(line_num);
 
-    let canvas = createCanvas(width,height);
+    canvas = createCanvas(width,height);
     canvas.parent("p5_canvas");
     background(0);
     let img = createImage(width, height);
@@ -28,19 +46,35 @@ function setup(){
     img.updatePixels() ;
     image(img, 0, 0);
 
-
-    for (let i = 0; i < line_num; i++){
-        const abc_data = line_data[i];
-        const orientation_v = [-abc_data[0][1]*abc_data[2]/2,abc_data[0][0]*abc_data[2]/2]
-        line(-orientation_v[0]+abc_data[1][0],-orientation_v[1]+abc_data[1][1],orientation_v[0]+abc_data[1][0],orientation_v[1]+abc_data[1][1]);
-        stroke(color_data[i]);
+    if(isDisplayLines){
+        for (let i = 0; i < line_num; i++){
+            const abc_data = line_data[i];
+            const orientation_v = [-abc_data[0][1]*abc_data[2]/2,abc_data[0][0]*abc_data[2]/2]
+            line(-orientation_v[0]+abc_data[1][0],-orientation_v[1]+abc_data[1][1],orientation_v[0]+abc_data[1][0],orientation_v[1]+abc_data[1][1]);
+            stroke(color_data[i]);
+        }
     }
+
+    //saveCanvas();
 }
 
-function draw() {
+function execute(){
+    height = height_input.value;
+    width = width_input.value;
+    line_num = line_num_input.value;
+    isDisplayLines = isDisplayLinesCheck.checked;
+    line_data = [];
+    color_data = [];
 
-  }
+    setup();
+}
 
+function saving_image(){
+    const isjpg = document.getElementById("jpg");
+    let extention = "png";
+    if(isjpg){extention = "jpg";}
+    saveCanvas(canvas,"untitled",extention);
+}
 
 function createPixelData(){
 
